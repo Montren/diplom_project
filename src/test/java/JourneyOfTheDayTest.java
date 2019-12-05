@@ -12,21 +12,16 @@ public class JourneyOfTheDayTest {
 
     @Test
     void positiveBuyingTest() {
-
         dataHelper.buyingForYourMoney();
         dataHelper.activeCardData();
         dataHelper.pushСontinueButton();
-
 //        $$(".notification__title").find(exactText("Успешно")).waitUntil(visible, 5000); //Потом раскомменть - тут баг как есть
     }
 
     @Test
     void positiveBuyingCreditTest() {
-
         dataHelper.buyingOnCredit();
-
         dataHelper.activeCardData();
-
         dataHelper.pushСontinueButton();
 
 //        $$(".notification__title").find(exactText("Успешно")).waitUntil(visible, 5000); //Потом раскомменть - тут баг как есть
