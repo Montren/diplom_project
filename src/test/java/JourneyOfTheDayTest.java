@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 
+import java.sql.SQLException;
+
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
@@ -11,36 +13,39 @@ public class JourneyOfTheDayTest {
     DataHelper dataHelper = new DataHelper();
 
     @Test
-    void positiveBuyingTest() {
+    void positiveBuyingTest() throws SQLException {
         dataHelper.buyingForYourMoney();
         dataHelper.activeCardData();
         dataHelper.pushСontinueButton();
-//        $$(".notification__title").find(exactText("Успешно")).waitUntil(visible, 5000); //Потом раскомменть - тут баг как есть
-    }
+        $$(".notification__title").find(exactText("Успешно")).waitUntil(visible, 12000);
+        dataHelper.paymentStatus(Status.APPROVED);
+        }
 
     @Test
-    void positiveBuyingCreditTest() {
+    void positiveBuyingCreditTest() throws SQLException {
         dataHelper.buyingOnCredit();
         dataHelper.activeCardData();
         dataHelper.pushСontinueButton();
-
-//        $$(".notification__title").find(exactText("Успешно")).waitUntil(visible, 5000); //Потом раскомменть - тут баг как есть
+        $$(".notification__title").find(exactText("Успешно")).waitUntil(visible, 15000);
+        dataHelper.creditStatus(Status.APPROVED);
     }
 
-    @Test
-    void lockedCardBuyingCreditTest() {
+    @Test // Тут баг на проверке выскакивающего окна. Заведи Issue
+    void lockedCardBuyingCreditTest() throws SQLException {
         dataHelper.buyingOnCredit();
         dataHelper.inactiveCardData();
         dataHelper.pushСontinueButton();
         $$(".notification__title").find(exactText("Ошибка")).waitUntil(visible, 12000);
+        dataHelper.creditStatus(Status.DECLINED);
     }
 
-    @Test
-    void lockedCardBuyingTest() {
+    @Test // Тут баг на проверке выскакивающего окна. Заведи Issue
+    void lockedCardBuyingTest() throws SQLException {
         dataHelper.buyingForYourMoney();
         dataHelper.inactiveCardData();
         dataHelper.pushСontinueButton();
-        $$(".notification__title").find(exactText("Ошибка")).waitUntil(visible, 11000);
+        $$(".notification__title").find(exactText("Ошибка")).waitUntil(visible, 12000);
+        dataHelper.paymentStatus(Status.DECLINED);
     }
 
     @Test

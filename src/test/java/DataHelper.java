@@ -1,11 +1,17 @@
 import com.codeborne.selenide.SelenideElement;
+import lombok.val;
+import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.List;
 
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.open;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DataHelper {
     List<SelenideElement> input = $$(".input__control");
@@ -48,4 +54,19 @@ public class DataHelper {
     }
 
 
+    public void paymentStatus(Status status) throws SQLException {
+        val runner = new QueryRunner();
+        val conn = DriverManager.getConnection("jdbc:mysql://192.168.99.100:3306/app", "app", "pass");
+        val paymentDataSQL = "SELECT * FROM payment_entity WHERE created >= (now() - interval 5 minute) ORDER BY created DESC;";
+        val payment = runner.query(conn, paymentDataSQL, new BeanHandler<>(Payment.class));
+        assertEquals(status, payment.status);
+    }
+
+    public void creditStatus(Status status) throws SQLException {
+        val runner = new QueryRunner();
+        val conn = DriverManager.getConnection("jdbc:mysql://192.168.99.100:3306/app", "app", "pass");
+        val creditDataSQL = "SELECT * FROM credit_request_entity WHERE created >= (now() - interval 5 minute) ORDER BY created DESC;";
+        val payment = runner.query(conn, creditDataSQL, new BeanHandler<>(Payment.class));
+        assertEquals(status, payment.status);
+    }
 }
