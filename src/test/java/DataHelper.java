@@ -65,8 +65,11 @@ public class DataHelper {
     public void creditStatus(Status status) throws SQLException {
         val runner = new QueryRunner();
         val conn = DriverManager.getConnection("jdbc:mysql://192.168.99.100:3306/app", "app", "pass");
+//        val conn2 = DriverManager.getConnection("jdbc:postgresql://192.168.99.100:5432/app", "app", "pass");
         val creditDataSQL = "SELECT * FROM credit_request_entity WHERE created >= (now() - interval 5 minute) ORDER BY created DESC;";
         val payment = runner.query(conn, creditDataSQL, new BeanHandler<>(Payment.class));
+//        assertEquals(status, payment.status);
+//        val payment2 = runner.query(conn2, creditDataSQL, new BeanHandler<>(Payment.class));
         assertEquals(status, payment.status);
     }
 }
