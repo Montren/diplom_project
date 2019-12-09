@@ -26,8 +26,9 @@ public class JourneyOfTheDayTest {
         dataHelper.buyingOnCredit();
         dataHelper.activeCardData();
         dataHelper.pushСontinueButton();
-        $$(".notification__title").find(exactText("Успешно")).waitUntil(visible, 15000);
-        dataHelper.creditStatus(Status.APPROVED);
+        $$(".notification__title").find(exactText("Успешно")).waitUntil(visible, 20000);
+//        dataHelper.creditStatus(Status.APPROVED);
+        dataHelper.creditStatusPostgres(Status.APPROVED);
     }
 
     @Test // Тут баг на проверке выскакивающего окна. Заведи Issue
