@@ -39,7 +39,7 @@ public class JourneyOfTheDayTest {
         dataHelper.pushСontinueButton();
         $$(".notification__title").find(exactText("Ошибка")).waitUntil(visible, 12000);
 //        dataHelper.creditStatus(Status.DECLINED);
-        dataHelper.paymentStatusPostgres(Status.DECLINED);
+        dataHelper.creditStatusPostgres(Status.APPROVED);
     }
 
     @Test // Тут баг на проверке выскакивающего окна. Заведи Issue
@@ -48,7 +48,8 @@ public class JourneyOfTheDayTest {
         dataHelper.inactiveCardData();
         dataHelper.pushСontinueButton();
         $$(".notification__title").find(exactText("Ошибка")).waitUntil(visible, 12000);
-        dataHelper.creditStatusPostgres(Status.DECLINED);
+//        dataHelper.paymentStatus(Status.DECLINED);
+        dataHelper.paymentStatusPostgres(Status.DECLINED);
     }
 
     @Test
