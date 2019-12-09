@@ -39,7 +39,7 @@ public class JourneyOfTheDayTest {
         dataHelper.pushСontinueButton();
         $$(".notification__title").find(exactText("Ошибка")).waitUntil(visible, 12000);
 //        dataHelper.creditStatus(Status.DECLINED);
-        dataHelper.creditStatusPostgres(Status.APPROVED);
+        dataHelper.creditStatusPostgres(Status.DECLINED);
     }
 
     @Test // Тут баг на проверке выскакивающего окна. Заведи Issue
