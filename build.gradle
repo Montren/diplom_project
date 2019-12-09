@@ -32,6 +32,7 @@ dependencies {
     testImplementation 'io.qameta.allure:allure-selenide:2.13.0'
     testImplementation 'commons-dbutils:commons-dbutils:1.7'
     testImplementation 'mysql:mysql-connector-java:8.0.18'
+    compile 'postgresql:postgresql:9.1-901-1.jdbc4'
 }
 
 test {

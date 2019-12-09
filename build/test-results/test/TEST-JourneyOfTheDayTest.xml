@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="JourneyOfTheDayTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-12-09T20:34:29" hostname="MSI" time="15.958">
+  <properties/>
+  <testcase name="positiveBuyingCreditTest()" classname="JourneyOfTheDayTest" time="15.958"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[дек 09, 2019 11:34:29 PM com.codeborne.selenide.drivercommands.LazyDriver getAndCheckWebDriver
+INFO: No webdriver is bound to current thread: 12 - let's create a new webdriver
+Starting ChromeDriver 78.0.3904.105 (60e2d8774a8151efa6a00b1f358371b1e0e07ee2-refs/branch-heads/3904@{#877}) on port 2741
+Only local connections are allowed.
+Please protect ports used by ChromeDriver and related test frameworks to prevent access by malicious code.
+[1575923674.297][WARNING]: Timed out connecting to Chrome, retrying...
+дек 09, 2019 11:34:36 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: W3C
+дек 09, 2019 11:34:36 PM com.codeborne.selenide.webdriver.BrowserResizer adjustBrowserSize
+INFO: Set browser size to 1366x768
+[1575923678.394][WARNING]: Timed out connecting to Chrome, retrying...
+дек 09, 2019 11:34:40 PM com.codeborne.selenide.webdriver.WebDriverFactory logBrowserVersion
+INFO: BrowserName=chrome Version=78.0.3904.108 Platform=XP
+дек 09, 2019 11:34:40 PM com.codeborne.selenide.webdriver.WebDriverFactory createWebDriver
+INFO: Selenide v. 5.3.1
+дек 09, 2019 11:34:40 PM com.codeborne.selenide.webdriver.WebDriverFactory logSeleniumInfo
+INFO: Selenium WebDriver v. 3.141.59 build time: 2018-11-14T08:17:03
+дек 09, 2019 11:34:40 PM com.codeborne.selenide.drivercommands.CreateDriverCommand createDriver
+INFO: Create webdriver in current thread 12: ChromeDriver -> ChromeDriver: chrome on XP (48a26a0f391ba6b7fd8332fd5d58422e)
+]]></system-err>
+</testsuite>
