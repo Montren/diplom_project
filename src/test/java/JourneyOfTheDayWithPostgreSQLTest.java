@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class JourneyOfTheDayTest {
+public class JourneyOfTheDayWithPostgreSQLTest {
 
     DataHelper dataHelper = new DataHelper();
 
@@ -18,9 +18,8 @@ public class JourneyOfTheDayTest {
         dataHelper.activeCardData();
         dataHelper.pushСontinueButton();
         $$(".notification__title").find(exactText("Успешно")).waitUntil(visible, 12000);
-//        dataHelper.paymentStatus(Status.APPROVED);
         dataHelper.paymentStatusPostgres(Status.APPROVED);
-        }
+    }
 
     @Test
     void positiveBuyingCreditTest() throws SQLException {
@@ -28,27 +27,24 @@ public class JourneyOfTheDayTest {
         dataHelper.activeCardData();
         dataHelper.pushСontinueButton();
         $$(".notification__title").find(exactText("Успешно")).waitUntil(visible, 20000);
-//        dataHelper.creditStatus(Status.APPROVED);
         dataHelper.creditStatusPostgres(Status.APPROVED);
     }
 
-    @Test // Тут баг на проверке выскакивающего окна. Заведи Issue
+    @Test
     void lockedCardBuyingCreditTest() throws SQLException {
         dataHelper.buyingOnCredit();
         dataHelper.inactiveCardData();
         dataHelper.pushСontinueButton();
         $$(".notification__title").find(exactText("Ошибка")).waitUntil(visible, 12000);
-//        dataHelper.creditStatus(Status.DECLINED);
         dataHelper.creditStatusPostgres(Status.DECLINED);
     }
 
-    @Test // Тут баг на проверке выскакивающего окна. Заведи Issue
+    @Test
     void lockedCardBuyingTest() throws SQLException {
         dataHelper.buyingForYourMoney();
         dataHelper.inactiveCardData();
         dataHelper.pushСontinueButton();
         $$(".notification__title").find(exactText("Ошибка")).waitUntil(visible, 12000);
-//        dataHelper.paymentStatus(Status.DECLINED);
         dataHelper.paymentStatusPostgres(Status.DECLINED);
     }
 

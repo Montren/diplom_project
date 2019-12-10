@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="JourneyOfTheDayTest" tests="9" skipped="0" failures="2" errors="0" timestamp="2019-12-09T20:45:20" hostname="MSI" time="59.443">
+<testsuite name="JourneyOfTheDayWithPostgreSQLTest" tests="9" skipped="0" failures="2" errors="0" timestamp="2019-12-10T20:13:02" hostname="MSI" time="69.419">
   <properties/>
-  <testcase name="lockedCardBuyingCreditTest()" classname="JourneyOfTheDayTest" time="26.029">
-    <failure message="com.codeborne.selenide.ex.ElementNotFound: Element not found {.notification__title.findBy(exact text 'Ошибка')}&#10;Expected: visible&#10;Screenshot: file:/C:/Users/Montren/IdeaProjects/AutomaticTesting/diplom_project_0.1/build/reports/tests/1575924345510.0.png&#10;Page source: file:/C:/Users/Montren/IdeaProjects/AutomaticTesting/diplom_project_0.1/build/reports/tests/1575924345510.0.html&#10;Timeout: 12 s.&#10;Caused by: com.codeborne.selenide.ex.ElementNotFound: Element not found {.notification__title.findBy(exact text 'Ошибка')}&#10;Expected: exact text 'Ошибка'&#10;Screenshot: null&#10;Timeout: 0 ms." type="com.codeborne.selenide.ex.ElementNotFound">com.codeborne.selenide.ex.ElementNotFound: Element not found {.notification__title.findBy(exact text 'Ошибка')}
+  <testcase name="lockedCardBuyingCreditTest()" classname="JourneyOfTheDayWithPostgreSQLTest" time="30.373">
+    <failure message="com.codeborne.selenide.ex.ElementNotFound: Element not found {.notification__title.findBy(exact text 'Ошибка')}&#10;Expected: visible&#10;Screenshot: file:/C:/Users/Montren/IdeaProjects/AutomaticTesting/diplom_project_0.1/build/reports/tests/1576008812145.0.png&#10;Page source: file:/C:/Users/Montren/IdeaProjects/AutomaticTesting/diplom_project_0.1/build/reports/tests/1576008812145.0.html&#10;Timeout: 12 s.&#10;Caused by: com.codeborne.selenide.ex.ElementNotFound: Element not found {.notification__title.findBy(exact text 'Ошибка')}&#10;Expected: exact text 'Ошибка'&#10;Screenshot: null&#10;Timeout: 0 ms." type="com.codeborne.selenide.ex.ElementNotFound">com.codeborne.selenide.ex.ElementNotFound: Element not found {.notification__title.findBy(exact text 'Ошибка')}
 Expected: visible
-Screenshot: file:/C:/Users/Montren/IdeaProjects/AutomaticTesting/diplom_project_0.1/build/reports/tests/1575924345510.0.png
-Page source: file:/C:/Users/Montren/IdeaProjects/AutomaticTesting/diplom_project_0.1/build/reports/tests/1575924345510.0.html
+Screenshot: file:/C:/Users/Montren/IdeaProjects/AutomaticTesting/diplom_project_0.1/build/reports/tests/1576008812145.0.png
+Page source: file:/C:/Users/Montren/IdeaProjects/AutomaticTesting/diplom_project_0.1/build/reports/tests/1576008812145.0.html
 Timeout: 12 s.
 Caused by: com.codeborne.selenide.ex.ElementNotFound: Element not found {.notification__title.findBy(exact text 'Ошибка')}
 Expected: exact text 'Ошибка'
@@ -20,7 +20,7 @@ Timeout: 0 ms.
 	at com.codeborne.selenide.impl.SelenideElementProxy.dispatchAndRetry(SelenideElementProxy.java:99)
 	at com.codeborne.selenide.impl.SelenideElementProxy.invoke(SelenideElementProxy.java:65)
 	at com.sun.proxy.$Proxy13.waitUntil(Unknown Source)
-	at JourneyOfTheDayTest.lockedCardBuyingCreditTest(JourneyOfTheDayTest.java:40)
+	at JourneyOfTheDayWithPostgreSQLTest.lockedCardBuyingCreditTest(JourneyOfTheDayWithPostgreSQLTest.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -118,16 +118,16 @@ Timeout: 0 ms.
 	... 95 more
 </failure>
   </testcase>
-  <testcase name="tryBuyWithoutСvcOrCvvTest()" classname="JourneyOfTheDayTest" time="1.288"/>
-  <testcase name="tryBuyWithIncorrectMonthAndYearTest()" classname="JourneyOfTheDayTest" time="1.356"/>
-  <testcase name="positiveBuyingTest()" classname="JourneyOfTheDayTest" time="8.89"/>
-  <testcase name="tryBuyWithExpiredCardTest()" classname="JourneyOfTheDayTest" time="1.199"/>
-  <testcase name="tryBuyWithoutCardOwnerTest()" classname="JourneyOfTheDayTest" time="1.116"/>
-  <testcase name="lockedCardBuyingTest()" classname="JourneyOfTheDayTest" time="13.703">
-    <failure message="com.codeborne.selenide.ex.ElementNotFound: Element not found {.notification__title.findBy(exact text 'Ошибка')}&#10;Expected: visible&#10;Screenshot: file:/C:/Users/Montren/IdeaProjects/AutomaticTesting/diplom_project_0.1/build/reports/tests/1575924373229.1.png&#10;Page source: file:/C:/Users/Montren/IdeaProjects/AutomaticTesting/diplom_project_0.1/build/reports/tests/1575924373229.1.html&#10;Timeout: 12 s.&#10;Caused by: com.codeborne.selenide.ex.ElementNotFound: Element not found {.notification__title.findBy(exact text 'Ошибка')}&#10;Expected: exact text 'Ошибка'&#10;Screenshot: null&#10;Timeout: 0 ms." type="com.codeborne.selenide.ex.ElementNotFound">com.codeborne.selenide.ex.ElementNotFound: Element not found {.notification__title.findBy(exact text 'Ошибка')}
+  <testcase name="tryBuyWithoutСvcOrCvvTest()" classname="JourneyOfTheDayWithPostgreSQLTest" time="1.643"/>
+  <testcase name="tryBuyWithIncorrectMonthAndYearTest()" classname="JourneyOfTheDayWithPostgreSQLTest" time="1.674"/>
+  <testcase name="positiveBuyingTest()" classname="JourneyOfTheDayWithPostgreSQLTest" time="5.023"/>
+  <testcase name="tryBuyWithExpiredCardTest()" classname="JourneyOfTheDayWithPostgreSQLTest" time="1.391"/>
+  <testcase name="tryBuyWithoutCardOwnerTest()" classname="JourneyOfTheDayWithPostgreSQLTest" time="1.247"/>
+  <testcase name="lockedCardBuyingTest()" classname="JourneyOfTheDayWithPostgreSQLTest" time="13.825">
+    <failure message="com.codeborne.selenide.ex.ElementNotFound: Element not found {.notification__title.findBy(exact text 'Ошибка')}&#10;Expected: visible&#10;Screenshot: file:/C:/Users/Montren/IdeaProjects/AutomaticTesting/diplom_project_0.1/build/reports/tests/1576008837348.1.png&#10;Page source: file:/C:/Users/Montren/IdeaProjects/AutomaticTesting/diplom_project_0.1/build/reports/tests/1576008837348.1.html&#10;Timeout: 12 s.&#10;Caused by: com.codeborne.selenide.ex.ElementNotFound: Element not found {.notification__title.findBy(exact text 'Ошибка')}&#10;Expected: exact text 'Ошибка'&#10;Screenshot: null&#10;Timeout: 0 ms." type="com.codeborne.selenide.ex.ElementNotFound">com.codeborne.selenide.ex.ElementNotFound: Element not found {.notification__title.findBy(exact text 'Ошибка')}
 Expected: visible
-Screenshot: file:/C:/Users/Montren/IdeaProjects/AutomaticTesting/diplom_project_0.1/build/reports/tests/1575924373229.1.png
-Page source: file:/C:/Users/Montren/IdeaProjects/AutomaticTesting/diplom_project_0.1/build/reports/tests/1575924373229.1.html
+Screenshot: file:/C:/Users/Montren/IdeaProjects/AutomaticTesting/diplom_project_0.1/build/reports/tests/1576008837348.1.png
+Page source: file:/C:/Users/Montren/IdeaProjects/AutomaticTesting/diplom_project_0.1/build/reports/tests/1576008837348.1.html
 Timeout: 12 s.
 Caused by: com.codeborne.selenide.ex.ElementNotFound: Element not found {.notification__title.findBy(exact text 'Ошибка')}
 Expected: exact text 'Ошибка'
@@ -142,7 +142,7 @@ Timeout: 0 ms.
 	at com.codeborne.selenide.impl.SelenideElementProxy.dispatchAndRetry(SelenideElementProxy.java:99)
 	at com.codeborne.selenide.impl.SelenideElementProxy.invoke(SelenideElementProxy.java:65)
 	at com.sun.proxy.$Proxy13.waitUntil(Unknown Source)
-	at JourneyOfTheDayTest.lockedCardBuyingTest(JourneyOfTheDayTest.java:50)
+	at JourneyOfTheDayWithPostgreSQLTest.lockedCardBuyingTest(JourneyOfTheDayWithPostgreSQLTest.java:47)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -240,27 +240,27 @@ Timeout: 0 ms.
 	... 95 more
 </failure>
   </testcase>
-  <testcase name="positiveBuyingCreditTest()" classname="JourneyOfTheDayTest" time="4.698"/>
-  <testcase name="tryBuyWithoutCardNumberTest()" classname="JourneyOfTheDayTest" time="1.135"/>
+  <testcase name="positiveBuyingCreditTest()" classname="JourneyOfTheDayWithPostgreSQLTest" time="12.187"/>
+  <testcase name="tryBuyWithoutCardNumberTest()" classname="JourneyOfTheDayWithPostgreSQLTest" time="2.016"/>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[дек 09, 2019 11:45:20 PM com.codeborne.selenide.drivercommands.LazyDriver getAndCheckWebDriver
+  <system-err><![CDATA[дек 10, 2019 11:13:02 PM com.codeborne.selenide.drivercommands.LazyDriver getAndCheckWebDriver
 INFO: No webdriver is bound to current thread: 12 - let's create a new webdriver
-Starting ChromeDriver 78.0.3904.105 (60e2d8774a8151efa6a00b1f358371b1e0e07ee2-refs/branch-heads/3904@{#877}) on port 3573
+Starting ChromeDriver 78.0.3904.105 (60e2d8774a8151efa6a00b1f358371b1e0e07ee2-refs/branch-heads/3904@{#877}) on port 7755
 Only local connections are allowed.
 Please protect ports used by ChromeDriver and related test frameworks to prevent access by malicious code.
-[1575924325.441][WARNING]: Timed out connecting to Chrome, retrying...
-дек 09, 2019 11:45:27 PM org.openqa.selenium.remote.ProtocolHandshake createSession
+[1576008788.904][WARNING]: Timed out connecting to Chrome, retrying...
+дек 10, 2019 11:13:10 PM org.openqa.selenium.remote.ProtocolHandshake createSession
 INFO: Detected dialect: W3C
-дек 09, 2019 11:45:27 PM com.codeborne.selenide.webdriver.BrowserResizer adjustBrowserSize
+дек 10, 2019 11:13:11 PM com.codeborne.selenide.webdriver.BrowserResizer adjustBrowserSize
 INFO: Set browser size to 1366x768
-[1575924329.537][WARNING]: Timed out connecting to Chrome, retrying...
-дек 09, 2019 11:45:31 PM com.codeborne.selenide.webdriver.WebDriverFactory logBrowserVersion
+[1576008793.048][WARNING]: Timed out connecting to Chrome, retrying...
+дек 10, 2019 11:13:15 PM com.codeborne.selenide.webdriver.WebDriverFactory logBrowserVersion
 INFO: BrowserName=chrome Version=78.0.3904.108 Platform=XP
-дек 09, 2019 11:45:31 PM com.codeborne.selenide.webdriver.WebDriverFactory createWebDriver
+дек 10, 2019 11:13:15 PM com.codeborne.selenide.webdriver.WebDriverFactory createWebDriver
 INFO: Selenide v. 5.3.1
-дек 09, 2019 11:45:31 PM com.codeborne.selenide.webdriver.WebDriverFactory logSeleniumInfo
+дек 10, 2019 11:13:15 PM com.codeborne.selenide.webdriver.WebDriverFactory logSeleniumInfo
 INFO: Selenium WebDriver v. 3.141.59 build time: 2018-11-14T08:17:03
-дек 09, 2019 11:45:31 PM com.codeborne.selenide.drivercommands.CreateDriverCommand createDriver
-INFO: Create webdriver in current thread 12: ChromeDriver -> ChromeDriver: chrome on XP (79a1dfc9ebf8f06c967981af2861f33e)
+дек 10, 2019 11:13:15 PM com.codeborne.selenide.drivercommands.CreateDriverCommand createDriver
+INFO: Create webdriver in current thread 12: ChromeDriver -> ChromeDriver: chrome on XP (ff342f7369e1419dcd2315893c578e2a)
 ]]></system-err>
 </testsuite>
