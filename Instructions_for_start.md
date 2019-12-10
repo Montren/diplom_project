@@ -1,5 +1,5 @@
-####Выбор базы данных:
-#####MySQL
+#### Выбор базы данных:
+##### MySQL
 Для тестирования с использованием базы данных MySQL: 
 1. docker-compose.yml должен быть следующего вида:
 ````
@@ -32,7 +32,7 @@ spring.datasource.password=pass
 ````
 3 . Используйте тесты в классе JourneyOfTheDayWithMySQLTest
 
-#####PostgreSQL
+##### PostgreSQL
 Для тестирования с использованием базы данных PostgreSQLL: 
 1. docker-compose.yml должен быть следующего вида:
 
@@ -68,7 +68,7 @@ spring.payment-gate.url=http://localhost:9999/payment
 
 3 . Используйте тесты в классе JourneyOfTheDayWithPostgreSQLTest
 
-####Инструкции для запуска тестов
+#### Инструкции для запуска тестов
 
 Перед стартом тестов используйте команды:
 1. Настройте docker-compose.yml в зависимости от выбранной БД.
