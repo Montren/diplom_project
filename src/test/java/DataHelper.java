@@ -1,18 +1,39 @@
 import com.codeborne.selenide.SelenideElement;
-import java.util.List;
 
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selenide.*;
 
 public class DataHelper {
-    List<SelenideElement> input = $$(".input__control");
-    SelenideElement cardNumber = input.get(0);
-    SelenideElement month = input.get(1);
-    SelenideElement year = input.get(2);
-    SelenideElement cardOwner = input.get(3);
-    SelenideElement cvcOrCvvNumber = input.get(4);
+    private SelenideElement cardNumber = $(byText("Номер карты")).parent().$(".input__control");
+    private SelenideElement month = $(byText("Месяц")).parent().$(".input__control");
+    private SelenideElement year = $(byText("Год")).parent().$(".input__control");
+    private SelenideElement cardOwner = $(byText("Владелец")).parent().$(".input__control");
+    private SelenideElement cvcOrCvvNumber = $(byText("CVC/CVV")).parent().$(".input__control");
+
+
+    public void enterCardNumber(String cardNumberValue){
+        cardNumber.setValue(cardNumberValue);
+    }
+
+    public void enterMonth(String monthValue){
+        month.setValue(monthValue);
+    }
+
+    public void enterYear(String yearValue){
+        year.setValue(yearValue);
+    }
+
+    public void enterCardOwner(String cardOwnerValue){
+        cardOwner.setValue(cardOwnerValue);
+    }
+
+    public void enterCvcOrCvvNumber(String cvcOrCvvValue){
+        cvcOrCvvNumber.setValue(cvcOrCvvValue);
+    }
+
+
 
     public void buyingForYourMoney(){
         open("http://localhost:8080");
@@ -27,22 +48,35 @@ public class DataHelper {
     }
 
     public void activeCardData(){
-        cardNumber.setValue("4444444444444441");
-        month.setValue("08");
-        year.setValue("22");
-        cardOwner.setValue("Александр");
-        cvcOrCvvNumber.setValue("999");
+        enterCardNumber("4444444444444441");
+        enterMonth("08");
+        enterYear("22");
+        enterCardOwner("Александр");
+        enterCvcOrCvvNumber("999");
     }
 
     public void inactiveCardData(){
-        cardNumber.setValue("4444444444444442");
-        month.setValue("08");
-        year.setValue("22");
-        cardOwner.setValue("Александр");
-        cvcOrCvvNumber.setValue("999");
+        enterCardNumber("4444444444444442");
+        enterMonth("08");
+        enterYear("22");
+        enterCardOwner("Александр");
+        enterCvcOrCvvNumber("999");
     }
 
     public void pushСontinueButton(){
         $$(".button__content").find(exactText("Продолжить")).click();
     }
+
+    public void successNotification() { $$(".notification__title").find(exactText("Успешно")).waitUntil(visible, 20000);}
+
+    public void unsuccessNotification() { $$(".notification__title").find(exactText("Ошибка")).waitUntil(visible, 20000);}
+
+    public void formatNotification() {$$(".input__sub").find(exactText("Неверный формат")).shouldBe(visible);}
+
+    public void cardExpiryDateFormatNotification() {$(byText("Неверно указан срок действия карты")).shouldBe(visible);}
+
+    public void fieldFormatNotification(){$(byText("Поле обязательно для заполнения")).shouldBe(visible);}
+
+    public void cardExpiryDateNotification() {$(byText("Истёк срок действия карты")).shouldBe(visible);}
+
 }
