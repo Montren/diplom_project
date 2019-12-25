@@ -69,7 +69,7 @@ public class DataHelper {
 
     public void successNotification() { $$(".notification__title").find(exactText("Успешно")).waitUntil(visible, 20000);}
 
-    public void unsuccessNotification() { $$(".notification__title").find(exactText("Ошибка")).waitUntil(visible, 20000);}
+    public void unsuccessNotification() { $$(".notification__title").find(exactText("Ошибка")).waitUntil(visible, 4000);}
 
     public void formatNotification() {$$(".input__sub").find(exactText("Неверный формат")).shouldBe(visible);}
 
