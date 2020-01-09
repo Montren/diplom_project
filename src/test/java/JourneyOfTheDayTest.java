@@ -5,17 +5,17 @@ import java.sql.SQLException;
 
 public class JourneyOfTheDayTest {
 
-    DataHelper dataHelper = new DataHelper();
+    PageFactory pageFactory = new PageFactory();
     SQLHelper sqlHelper = new SQLHelper();
 
     @DisplayName("Сценарий №1. Покупка путешествия с действующей карты со своих денежных средств.")
     @Test
     void shouldBeApprovedStatusWhileBuyingTest() throws SQLException {
         sqlHelper.cleanDatabase();
-        dataHelper.buyingForYourMoney();
-        dataHelper.activeCardData();
-        dataHelper.pushСontinueButton();
-        dataHelper.successNotification();
+        pageFactory.buyingForYourMoney();
+        pageFactory.activeCardData();
+        pageFactory.pushСontinueButton();
+        pageFactory.findSuccessNotification();
         sqlHelper.checkLastPaymentStatus(Status.APPROVED);
         }
 
@@ -23,10 +23,10 @@ public class JourneyOfTheDayTest {
     @Test
     void shouldBeApprovedStatusWhileTakeCreditTest() throws SQLException {
         sqlHelper.cleanDatabase();
-        dataHelper.buyingOnCredit();
-        dataHelper.activeCardData();
-        dataHelper.pushСontinueButton();
-        dataHelper.successNotification();
+        pageFactory.buyingOnCredit();
+        pageFactory.activeCardData();
+        pageFactory.pushСontinueButton();
+        pageFactory.findSuccessNotification();
         sqlHelper.checkLastCreditPaymentStatus(Status.APPROVED);
     }
 
@@ -34,10 +34,10 @@ public class JourneyOfTheDayTest {
     @Test
     void shouldBeDeclineStatusWhileTakeCreditWithLockedCardTest() throws SQLException {
         sqlHelper.cleanDatabase();
-        dataHelper.buyingOnCredit();
-        dataHelper.inactiveCardData();
-        dataHelper.pushСontinueButton();
-        dataHelper.unsuccessNotification();
+        pageFactory.buyingOnCredit();
+        pageFactory.inactiveCardData();
+        pageFactory.pushСontinueButton();
+        pageFactory.findUnsuccessNotification();
         sqlHelper.checkLastCreditPaymentStatus(Status.DECLINED);
     }
 
@@ -45,72 +45,72 @@ public class JourneyOfTheDayTest {
     @Test
     void shouldBeDeclineStatusWhileBuyingWithLockedCardTest() throws SQLException {
         sqlHelper.cleanDatabase();
-        dataHelper.buyingForYourMoney();
-        dataHelper.inactiveCardData();
-        dataHelper.pushСontinueButton();
-        dataHelper.unsuccessNotification();
+        pageFactory.buyingForYourMoney();
+        pageFactory.inactiveCardData();
+        pageFactory.pushСontinueButton();
+        pageFactory.findUnsuccessNotification();
         sqlHelper.checkLastPaymentStatus(Status.DECLINED);
     }
 
     @DisplayName("Сценарий №5. Форма заявки без номера карты.")
     @Test
     void shouldBeErrorWhileBuyingWithoutCardNumberTest() {
-        dataHelper.buyingForYourMoney();
-        dataHelper.enterMonth("08");
-        dataHelper.enterYear("22");
-        dataHelper.enterCardOwner("Александр");
-        dataHelper.enterCvcOrCvvNumber("999");
-        dataHelper.pushСontinueButton();
-        dataHelper.formatNotification();
+        pageFactory.buyingForYourMoney();
+        pageFactory.enterMonth("08");
+        pageFactory.enterYear("22");
+        pageFactory.enterCardOwner("Александр");
+        pageFactory.enterCvcOrCvvNumber("999");
+        pageFactory.pushСontinueButton();
+        pageFactory.findIncorrectFormatNotification();
     }
 
     @DisplayName("Сценарий №6. Заявка с некорретным месяцем/годом окончания действия карты.")
     @Test
     void shouldBeErrorWhileBuyingWithIncorrectMonthAndYearTest() {
-        dataHelper.buyingForYourMoney();
-        dataHelper.enterCardNumber("4444444444444441");
-        dataHelper.enterMonth("15");
-        dataHelper.enterYear("48");
-        dataHelper.enterCardOwner("Александр");
-        dataHelper.enterCvcOrCvvNumber("999");
-        dataHelper.pushСontinueButton();
-        dataHelper.cardExpiryDateFormatNotification();
+        pageFactory.buyingForYourMoney();
+        pageFactory.enterCardNumber("4444444444444441");
+        pageFactory.enterMonth("15");
+        pageFactory.enterYear("48");
+        pageFactory.enterCardOwner("Александр");
+        pageFactory.enterCvcOrCvvNumber("999");
+        pageFactory.pushСontinueButton();
+        pageFactory.findCardIncorrectDateFormatNotification();
     }
 
     @DisplayName("Сценарий №7. Форма заявки без заполненной графы владельца.")
     @Test
     void shouldBeErrorWhileBuyingWithoutCardOwnerTest() {
-        dataHelper.buyingForYourMoney();
-        dataHelper.enterCardNumber("4444444444444441");
-        dataHelper.enterMonth("08");
-        dataHelper.enterYear("22");
-        dataHelper.enterCvcOrCvvNumber("999");
-        dataHelper.pushСontinueButton();
-        dataHelper.fieldFormatNotification();
+        pageFactory.buyingForYourMoney();
+        pageFactory.enterCardNumber("4444444444444441");
+        pageFactory.enterMonth("08");
+        pageFactory.enterYear("22");
+        pageFactory.enterCvcOrCvvNumber("999");
+        pageFactory.pushСontinueButton();
+        pageFactory.findFieldFormatNotification();
     }
 
     @DisplayName("Сценарий №8. Форма заявки без заполненной графы CVC/CVV.")
     @Test
     void shouldBeErrorWhileBuyingWithoutСvcOrCvvTest() {
-        dataHelper.buyingForYourMoney();
-        dataHelper.enterCardNumber("4444444444444441");
-        dataHelper.enterMonth("08");
-        dataHelper.enterYear("22");
-        dataHelper.enterCardOwner("Александр");
-        dataHelper.pushСontinueButton();
-        dataHelper.formatNotification();
+        pageFactory.buyingForYourMoney();
+        pageFactory.enterCardNumber("4444444444444441");
+        pageFactory.enterMonth("08");
+        pageFactory.enterYear("22");
+        pageFactory.enterCardOwner("Александр");
+        pageFactory.pushСontinueButton();
+        pageFactory.findIncorrectFormatNotification();
     }
 
     @DisplayName("Сценарий №9. Форма заявки с истекшим сроком карты.")
     @Test
     void shouldBeErrorWhileBuyingWithExpiredCardTest() {
-        dataHelper.buyingForYourMoney();
-        dataHelper.enterCardNumber("4444444444444441");
-        dataHelper.enterMonth("08");
-        dataHelper.enterYear("17");
-        dataHelper.enterCardOwner("Александр");
-        dataHelper.enterCvcOrCvvNumber("999");
-        dataHelper.pushСontinueButton();
-        dataHelper.cardExpiryDateNotification();
+        pageFactory.buyingForYourMoney();
+        pageFactory.enterCardNumber("4444444444444441");
+        pageFactory.enterMonth("08");
+        pageFactory.enterYear("17");
+        pageFactory.enterCardOwner("Александр");
+        pageFactory.enterCvcOrCvvNumber("999");
+        pageFactory.pushСontinueButton();
+        pageFactory.findCardExpiryDateNotification();
     }
 }

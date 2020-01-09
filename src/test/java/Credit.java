@@ -6,5 +6,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Credit {
-    private String status;
+    Status status;
+    String bank_id;
+    int countID;
 }

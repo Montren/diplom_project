@@ -23,45 +23,47 @@ public class SQLHelper {
         statementCreditEntity.executeUpdate();
     }
 
+    String orderCountSQL = "SELECT COUNT(id) AS countID FROM order_entity;";
+    String orderDataSQL = "SELECT * FROM order_entity;";
+    String paymentDataSQL = "SELECT * FROM payment_entity;";
+    String paymentCountSQL = "SELECT COUNT(id) AS countID FROM payment_entity;";
+    String creditDataSQL = "SELECT * FROM credit_request_entity;";
+    String creditCountSQL = "SELECT COUNT(id) AS count FROM credit_request_entity;";
+
+
     public void checkLastPaymentStatus(Status status) throws SQLException {
         val runner = new QueryRunner();
-        val conn = DriverManager.getConnection(getUrl(), getUser(), getPassword());
-        val paymentDataSQL = "SELECT * FROM payment_entity;";
-        val orderDataSQL = "SELECT * FROM order_entity;";
-        val orderCountSQL = "SELECT COUNT(id) AS countID FROM order_entity;";
-        val paymentCountSQL = "SELECT COUNT(id) AS countID FROM payment_entity;";
-        val payment = runner.query(conn, paymentDataSQL, new BeanHandler<>(Payment.class));
-        val transactionId = runner.query(conn, orderDataSQL, new BeanHandler<>(Payment.class));
-        val orderCount = runner.query(conn, orderCountSQL, new BeanHandler<>(Payment.class));
-        val paymentCount = runner.query(conn, paymentCountSQL, new BeanHandler<>(Payment.class));
-        assertEquals(1, orderCount.countID);
-        assertEquals(1, paymentCount.countID);
-        assertEquals(status, payment.status);
-        assertEquals(payment.transaction_id, transactionId.payment_id);
-        conn.close();
+        try (
+                val conn = DriverManager.getConnection(getUrl(), getUser(), getPassword());
+        ) {
+            val payment = runner.query(conn, paymentDataSQL, new BeanHandler<>(Payment.class));
+            val paymentId = runner.query(conn, orderDataSQL, new BeanHandler<>(Order.class));
+            val orderCount = runner.query(conn, orderCountSQL, new BeanHandler<>(Order.class));
+            val paymentCount = runner.query(conn, paymentCountSQL, new BeanHandler<>(Payment.class));
+            assertEquals(1, orderCount.countID);
+            assertEquals(1, paymentCount.countID);
+            assertEquals(status, payment.status);
+            assertEquals(payment.transaction_id, paymentId.payment_id);
+        }
     }
 
     public void checkLastCreditPaymentStatus(Status status) throws SQLException {
         val runner = new QueryRunner();
-        val conn = DriverManager.getConnection(getUrl(), getUser(), getPassword());
-        val paymentDataSQL = "SELECT * FROM credit_request_entity;";
-        val orderDataSQL = "SELECT * FROM order_entity;";
-        val orderCountSQL = "SELECT COUNT(id) AS count FROM order_entity;";
-        val creditCountSQL = "SELECT COUNT(id) AS count FROM credit_request_entity;";
-        val payment = runner.query(conn, paymentDataSQL, new BeanHandler<>(Payment.class));
-        val transactionId = runner.query(conn, orderDataSQL, new BeanHandler<>(Payment.class));
-        val orderCount = runner.query(conn, orderCountSQL, new BeanHandler<>(Payment.class));
-        val creditCount = runner.query(conn, creditCountSQL, new BeanHandler<>(Payment.class));
+        try (
+                val conn = DriverManager.getConnection(getUrl(), getUser(), getPassword());
+        ) {
+        val credit = runner.query(conn, creditDataSQL, new BeanHandler<>(Credit.class));
+        val creditId = runner.query(conn, orderDataSQL, new BeanHandler<>(Order.class));
+        val orderCount = runner.query(conn, orderCountSQL, new BeanHandler<>(Order.class));
+        val creditCount = runner.query(conn, creditCountSQL, new BeanHandler<>(Credit.class));
         assertEquals(1, orderCount.countID);
         assertEquals(1, creditCount.countID);
-        assertEquals(status, payment.status);
-        assertEquals(payment.bank_id, transactionId.credit_id);
-        conn.close();
+        assertEquals(status, credit.status);
+        assertEquals(credit.bank_id, creditId.credit_id);
     }
+}
 
-    private static String getUrl() {
-        return System.getProperty("test.db.url");
-    }
+    private static String getUrl() { return System.getProperty("test.db.url"); }
 
     private static String getUser() { return "app"; }
 
