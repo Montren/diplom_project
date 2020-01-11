@@ -15,7 +15,7 @@ public class JourneyOfTheDayTest {
         pageFactory.buyingForYourMoney();
         pageFactory.activeCardData();
         pageFactory.pushСontinueButton();
-        pageFactory.findSuccessNotification();
+        pageFactory.successNotificationShouldBeDisplayed();
         sqlHelper.checkLastPaymentStatus(Status.APPROVED);
         }
 
@@ -26,7 +26,7 @@ public class JourneyOfTheDayTest {
         pageFactory.buyingOnCredit();
         pageFactory.activeCardData();
         pageFactory.pushСontinueButton();
-        pageFactory.findSuccessNotification();
+        pageFactory.successNotificationShouldBeDisplayed();
         sqlHelper.checkLastCreditPaymentStatus(Status.APPROVED);
     }
 
@@ -37,7 +37,7 @@ public class JourneyOfTheDayTest {
         pageFactory.buyingOnCredit();
         pageFactory.inactiveCardData();
         pageFactory.pushСontinueButton();
-        pageFactory.findUnsuccessNotification();
+        pageFactory.unsuccessNotificationShouldBeDisplayed();
         sqlHelper.checkLastCreditPaymentStatus(Status.DECLINED);
     }
 
@@ -48,7 +48,7 @@ public class JourneyOfTheDayTest {
         pageFactory.buyingForYourMoney();
         pageFactory.inactiveCardData();
         pageFactory.pushСontinueButton();
-        pageFactory.findUnsuccessNotification();
+        pageFactory.unsuccessNotificationShouldBeDisplayed();
         sqlHelper.checkLastPaymentStatus(Status.DECLINED);
     }
 
@@ -61,7 +61,7 @@ public class JourneyOfTheDayTest {
         pageFactory.enterCardOwner("Александр");
         pageFactory.enterCvcOrCvvNumber("999");
         pageFactory.pushСontinueButton();
-        pageFactory.findIncorrectFormatNotification();
+        pageFactory.incorrectFormatNotificationShouldBeDisplayed();
     }
 
     @DisplayName("Сценарий №6. Заявка с некорретным месяцем/годом окончания действия карты.")
@@ -74,7 +74,7 @@ public class JourneyOfTheDayTest {
         pageFactory.enterCardOwner("Александр");
         pageFactory.enterCvcOrCvvNumber("999");
         pageFactory.pushСontinueButton();
-        pageFactory.findCardIncorrectDateFormatNotification();
+        pageFactory.cardIncorrectDateFormatNotificationShouldBeDisplayed();
     }
 
     @DisplayName("Сценарий №7. Форма заявки без заполненной графы владельца.")
@@ -86,7 +86,7 @@ public class JourneyOfTheDayTest {
         pageFactory.enterYear("22");
         pageFactory.enterCvcOrCvvNumber("999");
         pageFactory.pushСontinueButton();
-        pageFactory.findFieldFormatNotification();
+        pageFactory.fieldFormatNotificationShouldBeDisplayed();
     }
 
     @DisplayName("Сценарий №8. Форма заявки без заполненной графы CVC/CVV.")
@@ -98,7 +98,7 @@ public class JourneyOfTheDayTest {
         pageFactory.enterYear("22");
         pageFactory.enterCardOwner("Александр");
         pageFactory.pushСontinueButton();
-        pageFactory.findIncorrectFormatNotification();
+        pageFactory.incorrectFormatNotificationShouldBeDisplayed();
     }
 
     @DisplayName("Сценарий №9. Форма заявки с истекшим сроком карты.")
@@ -111,6 +111,6 @@ public class JourneyOfTheDayTest {
         pageFactory.enterCardOwner("Александр");
         pageFactory.enterCvcOrCvvNumber("999");
         pageFactory.pushСontinueButton();
-        pageFactory.findCardExpiryDateNotification();
+        pageFactory.cardExpiryDateNotificationShouldBeDisplayed();
     }
 }

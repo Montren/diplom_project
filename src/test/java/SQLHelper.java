@@ -10,11 +10,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SQLHelper {
 
+    private String orderCountSQL = "SELECT COUNT(id) AS countID FROM order_entity;";
+    private String orderDataSQL = "SELECT * FROM order_entity;";
+    private String paymentDataSQL = "SELECT * FROM payment_entity;";
+    private String paymentCountSQL = "SELECT COUNT(id) AS countID FROM payment_entity;";
+    private String creditDataSQL = "SELECT * FROM credit_request_entity;";
+    private String creditCountSQL = "SELECT COUNT(id) AS count FROM credit_request_entity;";
+
     public void cleanDatabase() throws SQLException {
         val deleteFromOrderEntity = "delete from order_entity;";
         val deleteFromPaymentEntity = "delete from payment_entity;";
         val deleteFromCreditRequestEntity = "delete from credit_request_entity;";
-        val conn = DriverManager.getConnection(getUrl(), getUser(), getPassword());
+        try (
+                val conn = DriverManager.getConnection(getUrl(), getUser(), getPassword());
+        ) {
         PreparedStatement statementOrderEntity = conn.prepareStatement(deleteFromOrderEntity);
         PreparedStatement statementPaymentEntity = conn.prepareStatement(deleteFromPaymentEntity);
         PreparedStatement statementCreditEntity = conn.prepareStatement(deleteFromCreditRequestEntity);
@@ -22,14 +31,7 @@ public class SQLHelper {
         statementPaymentEntity.executeUpdate();
         statementCreditEntity.executeUpdate();
     }
-
-    String orderCountSQL = "SELECT COUNT(id) AS countID FROM order_entity;";
-    String orderDataSQL = "SELECT * FROM order_entity;";
-    String paymentDataSQL = "SELECT * FROM payment_entity;";
-    String paymentCountSQL = "SELECT COUNT(id) AS countID FROM payment_entity;";
-    String creditDataSQL = "SELECT * FROM credit_request_entity;";
-    String creditCountSQL = "SELECT COUNT(id) AS count FROM credit_request_entity;";
-
+}
 
     public void checkLastPaymentStatus(Status status) throws SQLException {
         val runner = new QueryRunner();
